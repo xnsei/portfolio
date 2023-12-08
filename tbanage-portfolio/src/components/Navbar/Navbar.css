@@ -1,0 +1,37 @@
+/* Navbar.css */
+.navbar {
+    color: white;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #333;
+    position: fixed;
+    font-size: 1.2rem;
+}
+
+.nav-links {
+    width: 60%;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 10px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active {
+    color: #88ccca;
+}

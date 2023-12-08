@@ -1,0 +1,21 @@
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    height: 30vh;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    /*text-align: center;*/
+}
+
+.skill {
+    margin: 0;
+    width: 150px;
+    height: 120px;
+}
+
+.greetings {
+    width: 100%;
+}
+

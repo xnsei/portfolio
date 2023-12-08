@@ -1,0 +1,66 @@
+.contact_container {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto 20vh;
+}
+
+.form_container {
+    flex: 1;
+    margin: auto 2vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.earth_container {
+    flex: 1;
+    margin-left: 1vh;
+}
+
+.form_greetings {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+    color: #f0e7db;
+}
+
+.label {
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin: 10px 20px 0;
+    padding: 0;
+    color: #88ccca;
+}
+
+.input {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin: 10px;
+    padding: 10px 15px;
+    color: #f0e7db;
+    background-color: #202023;
+    border-radius: 25px;
+    border: 1px solid #f0e7db;
+    outline: none;
+}
+
+.send_button {
+    width: fit-content;
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin: 10px;
+    padding: 10px 25px;
+    color: #f0e7db;
+    background-color: #202023;
+    border-radius: 25px;
+    border: 1px solid #f0e7db;
+    cursor: pointer;
+    transition: color 0.3s ease, border-top-color 0.3s ease, border-bottom-color 0.3s ease, border-right-color 0.3s ease, border-left-color 0.3s ease;
+}
+
+.send_button:hover {
+    color: #88ccca;
+    border: 1px solid #88ccca;
+}
