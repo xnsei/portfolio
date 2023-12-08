@@ -2,8 +2,8 @@ import "./Contact.css";
 import EarthCanvas from "../../models/Earth.jsx";
 import {useState} from "react";
 import emailjs from "@emailjs/browser";
-import EmailSuccess from "../../components/EmailSuccess/EmailSuccess.jsx";
-import EmailError from "../../components/EmailError/EmailError.jsx";
+import {motion} from "framer-motion";
+import {simpleFadeIn, simpleSlideInLeft} from "../../utils/motion.js";
 
 const Contact = () => {
     const [name, setName] = useState("");
@@ -46,10 +46,15 @@ const Contact = () => {
             );
     };
 
-
     return (
         <div className="contact_container">
-            <div className="form_container">
+            <motion.div
+                initial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true, amount: 0.8 }}
+                variants={simpleSlideInLeft}
+                className="form_container"
+            >
                 <p className="form_greetings">Get in touch!</p>
                 <span className="label">Your Name</span>
                 <input className="input" type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="What's your name?" />
@@ -58,10 +63,16 @@ const Contact = () => {
                 <span className="label">Your Message</span>
                 <textarea rows={7} className="input" name="content" value={content} onChange={(e) => setContent(e.target.value)} placeholder="What you want to say?" />
                 <button onClick={handleSubmit} className="send_button">{loading ? 'Sending...' : 'Send'}</button>
-            </div>
-            <div className="earth_container">
+            </motion.div>
+            <motion.div
+                nitial="offscreen"
+                whileInView="onscreen"
+                viewport={{ once: true, amount: 0.8 }}
+                variants={simpleFadeIn}
+                className="earth_container"
+            >
                 <EarthCanvas />
-            </div>
+            </motion.div>
         </div>
     )
 }

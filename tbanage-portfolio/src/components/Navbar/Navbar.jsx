@@ -21,7 +21,7 @@ const Navbar = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link activeClass="active" to="contact" spy={true} smooth={true} offset={-70} duration={500}>
+                    <Link activeClass="active" to="contact" spy={true} smooth={true} offset={-360} duration={500}>
                         Contact
                     </Link>
                 </li>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
+import { motion } from "framer-motion";
 import {
     Decal,
     Float,
@@ -7,6 +8,7 @@ import {
     Preload,
     useTexture,
 } from "@react-three/drei";
+import {simpleFadeIn} from "../utils/motion.js";
 
 const Ball = (props) => {
     const [decal] = useTexture([props.imgUrl]);
@@ -37,16 +39,23 @@ const Ball = (props) => {
 
 const TechStackModel = ({ icon }) => {
     return (
-        <Canvas
-            frameloop='demand'
-            dpr={[1, 2]}
-            gl={{ preserveDrawingBuffer: true }}
+        <motion.div
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.8 }}
+            variants={simpleFadeIn}
         >
-                <OrbitControls enableZoom={false} />
-                <Ball imgUrl={icon} />
+            <Canvas
+                frameloop='demand'
+                dpr={[1, 2]}
+                gl={{ preserveDrawingBuffer: true }}
+            >
+                    <OrbitControls enableZoom={false} />
+                    <Ball imgUrl={icon} />
 
-            <Preload all />
-        </Canvas>
+                <Preload all />
+            </Canvas>
+        </motion.div>
     );
 };
 
