@@ -1,5 +1,5 @@
 .projects-container {
-    margin: 30vh auto;
+    margin: 0 auto 30vh;
     width: 60%;
     display: flex;
     flex-wrap: wrap;
