@@ -4,8 +4,14 @@ import React from "react";
 import {projects} from "../../constants/index.js";
 import {motion} from "framer-motion";
 import {simpleFadeIn} from "../../utils/motion.js";
+import {useColorModeValue} from "@chakra-ui/react";
 
 const Projects = () => {
+    const designerThemeColor = useColorModeValue("#ff63c3", "#88ccca");
+    const designerStyleConfig = {
+        color: designerThemeColor,
+    }
+
     return (
         <motion.div
             initial="offscreen"
@@ -14,7 +20,7 @@ const Projects = () => {
             variants={simpleFadeIn}
             className="projects-container"
         >
-            <p className="projects_greetings">Some of the Projects I built</p>
+            <p style={designerStyleConfig} className="projects_greetings">Some of the Projects I built</p>
             {projects.map((project, index) => (
                 <ProjectCard key={index} project={project} />
             ))}

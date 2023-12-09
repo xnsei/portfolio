@@ -39,7 +39,7 @@ const LostProgrammer = () => {
         gltfLoader.load("/lost_programmer/scene.gltf", (gltf) => {
             const model = gltf.scene;
             scene.add(model);
-            const duration = 180;
+            const duration = 150;
             let frameCount = 0;
 
 

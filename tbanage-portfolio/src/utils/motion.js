@@ -10,7 +10,7 @@ export const simpleFadeIn = {
             type: "tween",
             bounce: 0.2,
             duration: 1,
-            ease: "easeOut",
+            // ease: "easeOut",
         }
     }
 };

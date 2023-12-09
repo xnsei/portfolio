@@ -4,6 +4,7 @@ import {useState} from "react";
 import emailjs from "@emailjs/browser";
 import {motion} from "framer-motion";
 import {simpleFadeIn, simpleSlideInLeft} from "../../utils/motion.js";
+import {color, useColorModeValue} from "@chakra-ui/react";
 
 const Contact = () => {
     const [name, setName] = useState("");
@@ -46,6 +47,21 @@ const Contact = () => {
             );
     };
 
+    const backgroundColor = useColorModeValue("#f0e7db", "#202023");
+    const fontColor = useColorModeValue("#58585e", "#f0e7db");
+    const designerThemeColor = useColorModeValue("#ff63c3", "#88ccca");
+
+    const inputStyleConfig = {
+        color: fontColor,
+        backgroundColor: backgroundColor,
+        borderRadius: '25px',
+        border: `2px solid ${fontColor}`
+    }
+
+    const designerStyleConfig = {
+        color: designerThemeColor,
+    }
+
     return (
         <div className="contact_container">
             <motion.div
@@ -55,14 +71,14 @@ const Contact = () => {
                 variants={simpleSlideInLeft}
                 className="form_container"
             >
-                <p className="form_greetings">Get in touch!</p>
-                <span className="label">Your Name</span>
-                <input className="input" type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="What's your name?" />
-                <span className="label">Your Email</span>
-                <input className="input" type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="What's your email?" />
-                <span className="label">Your Message</span>
-                <textarea rows={7} className="input" name="content" value={content} onChange={(e) => setContent(e.target.value)} placeholder="What you want to say?" />
-                <button onClick={handleSubmit} className="send_button">{loading ? 'Sending...' : 'Send'}</button>
+                <p style={{color: fontColor}} className="form_greetings">Get in touch!</p>
+                <span style={designerStyleConfig} className="label">Your Name</span>
+                <input style={inputStyleConfig} className="input" type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="What's your name?" />
+                <span style={designerStyleConfig} className="label">Your Email</span>
+                <input style={inputStyleConfig} className="input" type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="What's your email?" />
+                <span style={designerStyleConfig} className="label">Your Message</span>
+                <textarea style={inputStyleConfig} rows={7} className="input" name="content" value={content} onChange={(e) => setContent(e.target.value)} placeholder="What you want to say?" />
+                <button style={inputStyleConfig} onClick={handleSubmit} className="send_button">{loading ? 'Sending...' : 'Send'}</button>
             </motion.div>
             <motion.div
                 nitial="offscreen"

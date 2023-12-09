@@ -1,33 +1,85 @@
-import { Link } from 'react-scroll';
-import './Navbar.css';
+import React from 'react';
+import { Link as ScrollLink } from 'react-scroll';
+import { IoLogoGithub } from 'react-icons/io5';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Flex, Box, IconButton, useColorMode, useColorModeValue, Link } from '@chakra-ui/react';
+import { SunIcon, MoonIcon } from '@chakra-ui/icons';
 
 const Navbar = () => {
-    return (
-        <nav className="navbar">
-            <ul className="nav-links">
-                <li>
-                    <Link activeClass="active" to="home" spy={true} smooth={true} offset={-70} duration={500}>
-                        Home
-                    </Link>
-                </li>
-                <li>
-                    <Link activeClass="active" to="experience" spy={true} smooth={true} offset={0} duration={500}>
-                        Experience
-                    </Link>
-                </li>
-                <li>
-                    <Link activeClass="active" to="projects" spy={true} smooth={true} offset={-350} duration={500}>
-                        Projects
-                    </Link>
-                </li>
-                <li>
-                    <Link activeClass="active" to="contact" spy={true} smooth={true} offset={-360} duration={500}>
-                        Contact
-                    </Link>
-                </li>
-            </ul>
-        </nav>
-    )
-}
+    const { toggleColorMode } = useColorMode();
 
-export default Navbar
+    const backgroundColor = useColorModeValue("#e6d2cf", "#1a1a1d");
+    const fontColor = useColorModeValue('#58585e', '#f0e7db');
+    const linkHoverColor = useColorModeValue("#ff63c3", "#88ccca");
+
+    return (
+        <Flex
+            as="nav"
+            style={{ backgroundColor }}
+            align="center"
+            justify="center"
+            padding="10px 20px"
+            position="fixed"
+            top="0"
+            w="100%"
+            zIndex="1000"
+            fontSize="1.2rem"
+            fontWeight={500}
+            alignItems="center"
+            justifyContent="center"
+        >
+            <Flex as="ul" width="60%" listStyleType="none" display="flex" justifyContent="space-evenly" padding="0">
+                <Box as="li" color={fontColor}>
+                    <span>Tanmay Banage</span>
+                </Box>
+                {['home', 'experience', 'projects', 'contact'].map((item, index) => (
+                    <Box as="li" key={index} mx="10px" color={fontColor}>
+                        <ScrollLink
+                            activeClass="active"
+                            to={item}
+                            spy={true}
+                            smooth={true}
+                            offset={-70}
+                            duration={500}
+                        >
+                            <Link
+                                color={fontColor}
+                                _hover={{ color: linkHoverColor }}
+                                _activeLink={{ color: linkHoverColor }}
+                            >
+                                {item.charAt(0).toUpperCase() + item.slice(1)}
+                            </Link>
+                        </ScrollLink>
+                    </Box>
+                ))}
+                <Box  as="li">
+                    <Link color={fontColor} display="inline-flex" alignItems="center" href="https://github.com/xnsei/portfolio/tree/main/tbanage-portfolio" isExternal>
+                        <IoLogoGithub />
+                        <span style={{ marginLeft: '5px' }}>Source</span>
+                    </Link>
+                </Box>
+                <Box as="li">
+                    <AnimatePresence mode='wait' initial={false}>
+                        <motion.div
+                            style={{ display: 'inline-block' }}
+                            key={useColorModeValue('light', 'dark')}
+                            initial={{ y: -20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: 20, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <IconButton
+                                aria-label="Toggle theme"
+                                colorScheme={useColorModeValue('purple', 'orange')}
+                                icon={useColorModeValue(<MoonIcon />, <SunIcon />)}
+                                onClick={toggleColorMode}
+                            />
+                        </motion.div>
+                    </AnimatePresence>
+                </Box>
+            </Flex>
+        </Flex>
+    );
+};
+
+export default Navbar;

@@ -9,20 +9,3 @@ body {
     color: #f0e7db; /* Text color */
     display: flex;
 }
-
-h1 {
-    font-family: 'M PLUS Rounded 1c', sans-serif;
-    font-size: 3rem;
-    font-weight: 500;
-    margin: 0;
-    padding: 0;
-}
-
-.lostProgrammer {
-    display: flex;
-    top: 0;
-    left: 0;
-    margin: auto;
-    width: 100px;
-    color: #fff1dd;
-}
