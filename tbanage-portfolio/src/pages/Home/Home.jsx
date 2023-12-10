@@ -51,7 +51,7 @@ const Home = () => {
                 </VStack>
                 <Box textAlign="justify" mt={12} ml={3}>
                     <Text fontFamily="M PLUS Rounded 1c" fontSize="1.3rem" fontWeight="400">
-                        Experienced software engineer with a Bachelor's degree from IIT Indore. Passionate about internet technologies, quick learner, and collaborative team player adept at leveraging diverse frameworks for impactful software solutions. Proven track record in Full stack web development.
+                        I'm a competent software engineer and IIT Indore graduate, committed to excellence and continuous growth. My proven track record reflects competence in crafting impactful software solutions. Embracing challenges with enthusiasm, I contribute as a collaborative team player, always fostering a humble approach to learning and innovation.
                     </Text>
                 </Box>
             </MotionBox>
