@@ -3,8 +3,7 @@ import EarthCanvas from "../../models/Earth.jsx";
 import {useState} from "react";
 import emailjs from "@emailjs/browser";
 import {motion} from "framer-motion";
-import {simpleFadeIn, simpleSlideInLeft} from "../../utils/motion.js";
-import {color, useColorModeValue} from "@chakra-ui/react";
+import {simpleFadeIn, simpleSlideInLeft} from "@/utils/motion.js";
 
 const Contact = () => {
     const [name, setName] = useState("");
@@ -47,48 +46,62 @@ const Contact = () => {
             );
     };
 
-    const backgroundColor = useColorModeValue("#f0e7db", "#202023");
-    const fontColor = useColorModeValue("#58585e", "#f0e7db");
-    const designerThemeColor = useColorModeValue("#ff63c3", "#88ccca");
-
-    const inputStyleConfig = {
-        color: fontColor,
-        backgroundColor: backgroundColor,
-        borderRadius: '25px',
-        border: `2px solid ${fontColor}`
-    }
-
-    const designerStyleConfig = {
-        color: designerThemeColor,
-    }
 
     return (
-        <div className="contact_container">
-            <motion.div
-                initial="offscreen"
-                whileInView="onscreen"
-                viewport={{ once: true, amount: 0.8 }}
-                variants={simpleSlideInLeft}
-                className="form_container"
-            >
-                <p style={{color: fontColor}} className="form_greetings">Get in touch!</p>
-                <span style={designerStyleConfig} className="label">Your Name</span>
-                <input style={inputStyleConfig} className="input" type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} placeholder="What's your name?" />
-                <span style={designerStyleConfig} className="label">Your Email</span>
-                <input style={inputStyleConfig} className="input" type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="What's your email?" />
-                <span style={designerStyleConfig} className="label">Your Message</span>
-                <textarea style={inputStyleConfig} rows={7} className="input" name="content" value={content} onChange={(e) => setContent(e.target.value)} placeholder="What you want to say?" />
-                <button style={inputStyleConfig} onClick={handleSubmit} className="send_button">{loading ? 'Sending...' : 'Send'}</button>
-            </motion.div>
-            <motion.div
-                nitial="offscreen"
-                whileInView="onscreen"
-                viewport={{ once: true, amount: 0.8 }}
-                variants={simpleFadeIn}
-                className="earth_container"
-            >
-                <EarthCanvas />
-            </motion.div>
+        <div className="mx-auto max-w-screen-2xl w-4/5 mt-64 lg:mt-24 my-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+                <motion.div
+                    initial="offscreen"
+                    whileInView="onscreen"
+                    viewport={{once: true, amount: 0.8}}
+                    variants={simpleSlideInLeft}
+                    className="flex flex-col order-2 lg:order-1"
+                >
+                    <p className="text-4xl font-bold mb-4">Get in touch!</p>
+                    <span className="text-teal-500 text-xl ml-6 mb-2 font-medium">Your Name</span>
+                    <input
+                        className="border-2 border-white rounded-3xl bg-transparent px-4 py-2 mx-2 text-xl mb-4"
+                        type="text"
+                        name="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="What's your name?"
+                    />
+                    <span className="text-teal-500 text-xl ml-6 mb-2 font-medium">Your Email</span>
+                    <input
+                        className="border-2 border-white rounded-3xl bg-transparent px-4 py-2 mx-2 text-xl mb-4"
+                        type="text"
+                        name="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="What's your email?"
+                    />
+                    <span className="text-teal-500 text-xl ml-6 mb-2 font-medium">Your Message</span>
+                    <textarea
+                        rows={7}
+                        className="border-2 border-white rounded-3xl bg-transparent px-4 py-2 mx-2 text-xl mb-4"
+                        name="content"
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
+                        placeholder="What you want to say?"
+                    />
+                    <button
+                        onClick={handleSubmit}
+                        className="w-fit border-2 border-white rounded-3xl bg-transparent px-8 py-2 mx-2 text-xl mt-4 transition-transform duration-300 ease-in-out hover:transform hover:border-teal-500"
+                    >
+                        {loading ? 'Sending...' : 'Send'}
+                    </button>
+                </motion.div>
+                <motion.div
+                    nitial="offscreen"
+                    whileInView="onscreen"
+                    viewport={{once: true, amount: 0.8}}
+                    variants={simpleFadeIn}
+                    className="ml-4 order-1 lg:order-2"
+                >
+                    <EarthCanvas/>
+                </motion.div>
+            </div>
         </div>
     )
 }

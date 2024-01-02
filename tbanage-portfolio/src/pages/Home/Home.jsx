@@ -1,61 +1,46 @@
-import {Box, VStack, Text, Heading, Container, color, useColorModeValue} from "@chakra-ui/react";
-import { Suspense } from "react";
-import Loader from "../../components/Loader/Loader.jsx";
-import { motion } from "framer-motion";
-import { simpleFadeIn } from "../../utils/motion.js";
 import LostProgrammer from "../../models/LostProgrammer.jsx";
+import Reveal from "@/components/Reveal.tsx";
+import FadeIn from "@/components/FadeIn.tsx";
 
-const MotionBox = motion(Box);
-
-const grassTeal = "#88ccca";
-const pink = "#ff63c3";
 
 const Home = () => {
     return (
-        <VStack spacing={0} width="100%">
-            <Suspense fallback={<Loader />}>
-                <Box
-                    my="auto"
-                    display="flex"
-                    flexDirection="column"
-                    justifyContent="center"
-                    alignItems="center"
-                    height="70vh"
-                    overflow="hidden"
+        <div className="flex flex-col items-center justify-center h-screen">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div
+                    className="mx-auto order-2 lg:order-1 max-w-full w-4/5 flex flex-col justify-center"
                 >
-                    <LostProgrammer />
-                </Box>
-            </Suspense>
-            <MotionBox
-                initial="offscreen"
-                whileInView="onscreen"
-                viewport={{ once: true, amount: 0.8 }}
-                variants={simpleFadeIn}
-                margin="auto"
-                maxWidth="100%"
-                minWidth="60%"
-                width="50%"
-                flexDirection="column"
-                justifyContent="center"
-            >
-                <VStack spacing={4} alignItems="flex-start">
-                    <Text color={useColorModeValue(pink, grassTeal)} mt={12} mb={-4} fontSize="1.5rem" fontWeight="500">
-                        Hi, My Name is
-                    </Text>
-                    <Heading as="h1" fontSize="3.5rem" fontWeight="600" m={0}>
-                        Tanmay Banage
-                    </Heading>
-                    <Heading as="h2" fontSize="1.5rem" fontWeight="400" mt={-5} ml={3}>
-                        I'm a full stack software engineer
-                    </Heading>
-                </VStack>
-                <Box textAlign="justify" mt={12} ml={3}>
-                    <Text fontFamily="M PLUS Rounded 1c" fontSize="1.3rem" fontWeight="400">
-                        I'm a competent software engineer and IIT Indore graduate, committed to excellence and continuous growth. My proven track record reflects competence in crafting impactful software solutions. Embracing challenges with enthusiasm, I contribute as a collaborative team player, always fostering a humble approach to learning and innovation.
-                    </Text>
-                </Box>
-            </MotionBox>
-        </VStack>
+                    <FadeIn delay={0.25}>
+                        <Reveal delay={0.75}>
+                            <div className="flex flex-col items-start space-y-4">
+                                <p className="text-teal-500 mt-12 mb-[-1rem] text-xl font-medium">
+                                    Hi, My Name is
+                                </p>
+                                <h1 className="text-5xl font-extrabold">Tanmay Banage</h1>
+                                <h2 className="text-lg font-normal ml-2">
+                                    I'm a full stack software engineer
+                                </h2>
+                            </div>
+                        </Reveal>
+                    </FadeIn>
+                    <FadeIn delay={1.75}>
+                        <div className="text-justify mt-12 ml-3">
+                            <p className="text-xl font-normal">
+                                I'm a software engineer graduated from IIT Indore in 2021, committed to
+                                excellence and continuous growth. My proven track record reflects
+                                competence in crafting impactful software solutions. Embracing
+                                challenges with enthusiasm, I contribute as a collaborative team player,
+                                always fostering a humble approach to learning and innovation.
+                            </p>
+                        </div>
+                    </FadeIn>
+                </div>
+                <div
+                    className="m-4 order-1 lg:order-2 flex items-center justify-center h-40vh lg:h-70vh overflow-hidden">
+                    <LostProgrammer/>
+                </div>
+            </div>
+        </div>
     );
 };
 

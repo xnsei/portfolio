@@ -1,4 +1,3 @@
-import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { motion } from "framer-motion";
 import {

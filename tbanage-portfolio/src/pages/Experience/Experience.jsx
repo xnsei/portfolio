@@ -1,79 +1,49 @@
-import {Box, color, Heading, Link, List, ListItem, useColorModeValue, VStack} from "@chakra-ui/react";
 import Skills from "../../components/skills/Skills.jsx";
-import { experiences } from "../../constants/index.js";
-import { motion } from "framer-motion";
-import { simpleFadeIn } from "../../utils/motion.js";
+import {experiences} from "@/constants/index.js";
+import {motion} from "framer-motion";
+import {simpleFadeIn} from "@/utils/motion.js";
 
-const MotionBox = motion(Box);
-
-const grassTeal = "#88ccca";
-const pink = "#ff63c3";
-const lightFont = "#f0e7db";
-const darkFont = "#58585e";
-const ExperienceItem = ({ jobTitle, company, companyURL, period, description }) => {
-    const colorTheme = useColorModeValue(darkFont, lightFont);
+const ExperienceItem = ({jobTitle, company, companyURL, period, description}) => {
 
     return (
-        <Box className="experience-item">
-            <Link
-                href={companyURL}
-                isExternal
-                className="company"
-                color={colorTheme}
-                fontWeight="600"
-                fontSize="2.5rem"
-            >
+        <div className="experience-item">
+            <a href={companyURL} target="_blank" rel="noopener noreferrer"
+               className="company text-4xl mt-1 font-semibold">
                 {company}
-            </Link>
-            <Heading color={colorTheme} mt={1} as="h2" className="job-title" fontWeight="500" fontSize="1.5rem">
+            </a>
+            <h2 className="job-title mt-2 text-xl font-medium">
                 {jobTitle}
-            </Heading>
-            <Heading my={1} fontWeight={400} className="period" color={"#999"} fontSize="1rem">
+            </h2>
+            <p className="period my-1 text-lg font-normal" style={{color: "#999"}}>
                 {period}
-            </Heading>
-            <List
-                mt={4}
-                fontSize="1.2rem"
-                fontWeight="400"
-                lineHeight="1.6"
-                color={colorTheme}
-                listStyleType="disc"
-                pl={14}
-            >
+            </p>
+            <ul className="mt-4 text-lg font-normal list-disc pl-4">
                 {description.map((desc, index) => (
-                    <ListItem key={index}>{desc}</ListItem>
+                    <li key={index}>{desc}</li>
                 ))}
-            </List>
-        </Box>
+            </ul>
+        </div>
     );
 };
 
 const Experience = () => {
     return (
-        <VStack spacing={0} width="100%">
-            <MotionBox
+        <div className="mx-auto max-w-screen-2xl w-4/5 mt-64 lg:mt-24">
+            <motion.div
                 initial="offscreen"
-                whileInView="onscreen"
-                viewport={{ once: true, amount: 0.8 }}
+                animate="onscreen"
                 variants={simpleFadeIn}
-                margin="180px auto"
-                maxWidth="100%"
-                minWidth="60%"
-                width="50%"
-                fontFamily="M PLUS Rounded 1c"
-                className="experience_container"
+                className="child_container"
             >
-                <Box className="child_container">
-                    <Heading mb={3} width="60%" as="p" className="greetings" color={useColorModeValue(pink, grassTeal)} fontSize="1.5rem" fontWeight="500">
-                        My professional experience includes..
-                    </Heading>
-                    {experiences.map((exp, index) => (
-                        <ExperienceItem key={index} {...exp} />
-                    ))}
-                </Box>
-                <Skills />
-            </MotionBox>
-        </VStack>
+                <p className="text-teal-500 mt-12 text-xl font-medium">
+                    My professional experience includes..
+                </p>
+                {experiences.map((exp, index) => (
+                    <ExperienceItem key={index} {...exp} />
+                ))}
+            </motion.div>
+            <Skills/>
+        </div>
     );
 };
 

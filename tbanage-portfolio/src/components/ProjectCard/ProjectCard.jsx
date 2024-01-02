@@ -1,99 +1,43 @@
-import React from 'react';
-import { Box, Image, Heading, Text, Link, useColorModeValue } from '@chakra-ui/react';
-
-const ProjectCard = ({ project }) => {
-    const backgroundColor = useColorModeValue("#f0e7db", "#202023");
-    const fontColor = useColorModeValue("#58585e", "#f0e7db");
-    const designerThemeColor = useColorModeValue("#ff63c3", "#88ccca");
-    const titleColor = useColorModeValue('#000000', '#ffffff');
-
+const ProjectCard = ({project}) => {
     return (
-        <Box
-            maxW="25%"
-            m="20px"
-            border="2px solid"
-            borderColor={fontColor}
-            transition="transform 0.3s ease, border-color 0.3s ease"
-            borderRadius="25px"
-            cursor="pointer"
-            overflow="hidden"
-            _hover={{
-                transform: "translateY(-5px)",
-                borderColor: designerThemeColor,
-            }}
-            backgroundColor={backgroundColor}
-        >
-            <Box className="project-image-container">
-                <Image
+        <div
+            className="border-2 transition-transform duration-300 ease-in-out rounded-3xl cursor-pointer overflow-hidden hover:transform hover:-translate-y-2 hover:border-teal-500">
+            <div className="">
+                <img
                     src={project.img}
                     alt={project.title}
-                    className="project-image"
-                    transition="transform 0.3s ease"
-                    _hover={{
-                        transform: "scale(1.05)"
-                    }}
+                    className="transition-transform hover:scale-105"
                 />
-            </Box>
-            <Box textAlign="center" p="15px">
-                <Heading
-                    as="h3"
-                    size="lg"
-                    my="10px"
-                    fontWeight="500"
-                    color={titleColor}
-                >
+            </div>
+            <div className="text-center">
+                <h3 className="text-2xl my-4 font-semibold">
                     {project.title}
-                </Heading>
-                <Text fontSize="1em" color={fontColor}>
-                    {project.description}
-                </Text>
-                <Box
-                    my="25px"
-                    mx={"auto"}
-                    className="project-links"
-                >
+                </h3>
+                <p className="text-lg text-gray-400 mb-4">{project.description}</p>
+                <div className="mx-auto my-4 project-links">
                     {project.projectUrl && (
-                        <Link
+                        <a
                             href={project.projectUrl}
-                            isExternal
-                            p="8px 15px"
-                            m="10px"
-                            textDecoration="none"
-                            color={fontColor}
-                            borderRadius="25px"
-                            border="2px solid"
-                            borderColor={fontColor}
-                            _hover={{
-                                color: designerThemeColor,
-                                borderColor: designerThemeColor,
-                            }}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 border-2 rounded-xl mr-4 transition-transform duration-300 ease-in-out hover:transform hover:border-teal-500"
                         >
                             View Project
-                        </Link>
+                        </a>
                     )}
                     {project.githubUrl && (
-                        <Link
+                        <a
                             href={project.githubUrl}
-                            isExternal
-                            p="8px 15px"
-                            my="50px"
-                            m="10px"
-                            textDecoration="none"
-                            color={fontColor}
-                            borderRadius="25px"
-                            border="2px solid"
-                            borderColor={fontColor}
-                            _hover={{
-                                color: designerThemeColor,
-                                borderColor: designerThemeColor,
-                            }}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 border-2 rounded-xl mr-4 transition-transform duration-300 ease-in-out hover:transform hover:border-teal-500"
                         >
                             Github
-                        </Link>
+                        </a>
                     )}
-                </Box>
-            </Box>
-        </Box>
+                </div>
+            </div>
+        </div>
     );
 }
 
