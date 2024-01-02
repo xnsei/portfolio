@@ -1,4 +1,3 @@
-import "./Contact.css";
 import EarthCanvas from "../../models/Earth.jsx";
 import {useState} from "react";
 import emailjs from "@emailjs/browser";
@@ -97,7 +96,7 @@ const Contact = () => {
                     whileInView="onscreen"
                     viewport={{once: true, amount: 0.8}}
                     variants={simpleFadeIn}
-                    className="ml-4 order-1 lg:order-2"
+                    className="lg:ml-4 order-1 lg:order-2 h-96 lg:h-auto"
                 >
                     <EarthCanvas/>
                 </motion.div>

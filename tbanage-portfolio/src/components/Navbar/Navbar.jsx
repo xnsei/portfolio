@@ -7,7 +7,7 @@ const Navbar = () => {
         {id: 'home', offset: -70},
         {id: 'experience', offset: 0},
         {id: 'projects', offset: -30},
-        {id: 'contact', offset: -360},
+        {id: 'contact', offset: 300},
     ]
 
     return (
