@@ -36,7 +36,7 @@ const Home = () => {
                     </FadeIn>
                 </div>
                 <div
-                    className="m-4 order-1 lg:order-2 flex items-center justify-center h-40vh lg:h-70vh overflow-hidden">
+                    className="-mt-48 lg:mt-0 m-4 order-1 lg:order-2 flex items-center justify-center h-[400px] lg:h-[100%] overflow-hidden">
                     <LostProgrammer/>
                 </div>
             </div>
